@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+{% block head_title %}
+this is amazing
+{% endblock head_title%}
+{% block content %}
+Welcome to Tweetme
+<div id = "tweets">
+Loading ... 
+
+</div>
+
+<script>
+const tweetsElement = document.getElementById("tweets")
+
+const xhr = new XMLHttpRequest()
+const method = "GET" 
+const url = "/tweets"
+const responseType = "json"
+
+xhr.responseType = responseType
+xhr.open(method , url)
+xhr.onload = function(){
+    const serverResponse = xhr.response
+    var listedItems = serverResponse.response
+    var finalTweetStr = ""
+    for (var i = 0; i < listedItems.length; i ++){
+    console.log(listedItems[i])
+    var currentItem = "<div class = 'mb-4'><h1>" + listedItems[i].id + "</h1>" + "<p>" + listedItems[i].content + "</p></div>"
+    finalTweetStr += currentItem
+    }
+    tweetsElement.innerHTML = finalTweetStr
+    console.log(listedItems)
+}
+xhr.send()
+</script>
+{% endblock content %}
+
