@@ -13,13 +13,20 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
-
+    <style>
+      .bg-tweetme{
+      background-color : #2C2C2E!important;
+    }
+    </style>
     <title>Tweetme{% block head_title %}{% endblock head_title  %}</title>
   </head>
 
   <body>
+  {% include "components/navbar.html"%}
+  <div class = "container">
     {% block content %}
     {% endblock content %}
+    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
